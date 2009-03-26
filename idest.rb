@@ -7,7 +7,7 @@ require 'dm-validations'
 $: << File.join(File.dirname(__FILE__), 'lib')
 require 'idest/models'
 
-use Rack::Session::Cookie, :secret => '14d70fd4b37d3abd1abc1b8c5d524710ea175eef7a79e8017173a5805c'
+use Rack::Session::Cookie, :secret => '1ffe26b187c88daf3ce008fabcf7022d4273f57af84f11307ac5a73529acd6ba'
 
 error do
   e = request.env['sinatra.error']
