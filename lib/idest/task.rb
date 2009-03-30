@@ -1,3 +1,5 @@
+require 'user'
+require 'estimate'
 class Task
   include DataMapper::Resource
 
@@ -6,4 +8,5 @@ class Task
   property :description, Text
   property :created_at, DateTime
   belongs_to :user, :class_name => "User"
+  has n, :estimates, :class_name => "Estimate", :order => [:created_at]
 end

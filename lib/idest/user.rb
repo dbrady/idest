@@ -1,3 +1,5 @@
+require 'task'
+
 class User
   include DataMapper::Resource
 
@@ -9,6 +11,8 @@ class User
   property :salt, String, :protected => true, :nullable => false
   property :created_at, DateTime
 
+  has n, :tasks, :class_name => "Task", :order => [:name]
+  
   validates_present :password_confirmation
   validates_is_confirmed :password
 

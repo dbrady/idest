@@ -4,5 +4,19 @@ require 'dm-timestamps'
 
 # Other models
 $: << File.expand_path(File.dirname(__FILE__))
-require 'user'
 
+class User
+  include DataMapper::Resource
+end
+
+class Task
+  include DataMapper::Resource
+end
+
+class Estimate
+  include DataMapper::Resource
+end
+
+require 'user'
+require 'task'
+require 'estimate'
