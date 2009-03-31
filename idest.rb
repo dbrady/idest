@@ -4,6 +4,7 @@ require 'sinatra'
 require 'dm-core'
 require 'dm-timestamps'
 require 'dm-validations'
+require 'ruby-debug'
 $: << File.join(File.dirname(__FILE__), 'lib')
 require 'idest/models'
 
@@ -38,12 +39,12 @@ get '/login' do
 end
 
 post '/login' do
-    if user = User.authenticate(params[:email], params[:password])
-      session[:user] = user.id
-      redirect_to_stored
-    else
-      redirect '/login'
-    end
+  if user = User.authenticate(params[:email], params[:password])
+    session[:user] = user.id
+    redirect_to_stored
+  else
+    redirect '/login'
+  end
 end
 
 get '/logout' do

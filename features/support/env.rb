@@ -1,10 +1,23 @@
-require 'rubygems'
-ENV["RAILS_ENV"] = "test"
-gem "webrat", ">= 0.4.0"
-require 'webrat'
-require File.expand_path(File.join(File.dirname(__FILE__), '..', 'factories', 'factory_helpers'))
-require 'webrat/core/matchers'
+# ----------------------------------------------------------------------
+app_file = File.expand_path(File.join(File.dirname(__FILE__), *%w[.. .. idest.rb]))
+require app_file
 
-World do |world|
-  world.extend FactoryHelpers
+# Force the application name because polyglot breaks the auto-detection logic.
+Sinatra::Application.app_file = app_file
+
+# RSpec matchers
+require 'spec/expectations'
+
+# Webrat
+require 'webrat'
+Webrat.configure do |config|
+  config.mode = :sinatra
 end
+
+World do
+  session = Webrat::SinatraSession.new
+  session.extend(Webrat::Matchers)
+  session.extend(Webrat::HaveTagMatcher)
+  session
+end
+
