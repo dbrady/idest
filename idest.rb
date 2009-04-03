@@ -19,6 +19,7 @@ configure do
   require File.dirname(__FILE__) + '/config/idest.rb'
 end
 
+enable :sessions
 
 get '/' do
   login_required

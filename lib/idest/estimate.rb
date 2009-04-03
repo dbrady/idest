@@ -8,5 +8,6 @@ class Estimate
   property :completed_at, DateTime
   property :confidence, Integer
   property :created_at, DateTime
-  belongs_to :task, :class_name => "Task"
+  
+  belongs_to :task, :class_name => "Task", :child_key => [:task_id]
 end

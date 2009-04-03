@@ -105,5 +105,7 @@ Then /^the '(.*)' checkbox should be checked$/ do |label|
 end
 
 Then /^I should be redirected to '(.+)'$/ do |page|
-#  response.should redirect
+  debugger
+  xyz = 42
+  response.should_redirect
 end

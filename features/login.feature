@@ -7,13 +7,14 @@ Feature: Login
     Scenario: Redirect to login
         Given user accounts are set up
         And I visit '/'
-        Then I should be redirected to '/login'
+        Then I should see 'login'
 
-    Scenario: Redirect back to home
+    Scenario: Logged in
         Given user accounts are set up
+        When I visit '/logged_in'
+        Then I should see 'false'
         And I visit '/'
-        Then I should be redirected to '/login'
-
+        Then I should see 'login'
         And I log in as 'test@example.com'
-        Then I should be redirected to '/'
-        Then I should see 'hi test@example.com'
+        When I visit '/logged_in'
+        Then I should see 'true'
