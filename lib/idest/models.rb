@@ -20,3 +20,4 @@ end
 require 'user'
 require 'task'
 require 'estimate'
+require 'note'
